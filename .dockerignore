@@ -1,0 +1,33 @@
+# Model cache - mounted as volume
+model_cache/
+
+# Git
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Documentation
+README.md
+*.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Test files
+*.wav
+*.mp3
+*.m4a
+*.flac

@@ -1,0 +1,26 @@
+services:
+  qwen3-asr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qwen3-asr
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./model_cache:/app/model_cache
+    environment:
+      - MODEL_NAME=Qwen/Qwen3-ASR-1.7B
+      - DEVICE=cuda:0
+      - DTYPE=bfloat16
+      - MAX_INFERENCE_BATCH_SIZE=32
+      - MAX_NEW_TOKENS=256
+      - HF_HOME=/app/model_cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    shm_size: "8gb"
+    restart: unless-stopped
